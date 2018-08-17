@@ -33,7 +33,8 @@ bot.on(`new_chat_members`, async (ctx) => {
         const adder = Number(ctx.from.id);
 
         if (!admins.includes(adder)) {
-            await ctx.reply(`I'm not allowed be here... ask one of my admins to add me. My admins are:\n${admins.map((a) => `[${a}](tg://user?id=${a})`).join(`\n`)}`);
+            const msg = `I'm not allowed to be here... ask one of my admins to add me here. My admins are:\n${admins.map((a) => `[${a}](tg://user?id=${a})`).join(`\n`)}`
+            await ctx.reply(msg, { parse_mode: `markdown` });
             await ctx.leaveChat();
         }
 
