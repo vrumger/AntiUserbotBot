@@ -30,11 +30,15 @@ bot.on(`new_chat_members`, async (ctx) => {
     const { id } = ctx.message.new_chat_member;
 
     if (id == botId) {
-        const adder = Number(ctx.from.id);
+        const { user, status } = await ctx.getChatMember(ctx.from.id);
+        const statuses = [`creator`, `administrator`];
 
-        if (!admins.includes(adder)) {
-            const msg = `I'm not allowed to be here... ask one of my admins to add me here. My admins are:\n${admins.map((a) => `[${a}](tg://user?id=${a})`).join(`\n`)}`
-            await ctx.reply(msg, { parse_mode: `markdown` });
+	if (!statuses.includes(status)) {
+            await ctx.reply(
+                `Hi [${user.first_name}](tg://user?id=${user.id}). Thanks for adding me but you don't seem to be admin here so I will have to leave. Ask an admin to add me here :)`,
+                { parse_mode: `markdown` }
+            );
+
             await ctx.leaveChat();
         }
 
@@ -47,7 +51,7 @@ bot.on(`new_chat_members`, async (ctx) => {
         });
 
         await ctx.reply(
-            `Muted <i>*evil laugh*</i>`, 
+            `Muted <i>*evil laugh*</i>`,
             {
                 parse_mode: `html`,
                 ...ctx.keyboard()
