@@ -48,10 +48,13 @@ bot.on(`new_chat_members`, async (ctx) => {
     } catch (err) {
         switch (err.description) {
             case `Bad Request: can't demote chat creator`:
-                ctx.reply(`Why would you leave if you're the creator`);
+                ctx.reply(`Why would you leave if you're the creator?`);
                 break;
 
-           default:
+            case `Bad Request: user is an administrator of the chat`:
+                break;
+
+            default:
                await ctx.reply(err.description);
                await ctx.leaveChat();
         }
