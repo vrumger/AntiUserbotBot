@@ -6,10 +6,6 @@ const bot = new telegraf(process.env.TOKEN);
 
 const botId = bot.token.split(`:`)[0];
 
-const admins = process.env.ADMINS
-    .split(`,`)
-    .map(Number);
-
 bot.context.keyboard = function () {
     const { id } = this.message.new_chat_member;
 
@@ -17,14 +13,6 @@ bot.context.keyboard = function () {
         Markup.callbackButton(`I'm not a bot`, `unmute.${id}`)
     ]).extra();
 }
-
-bot.command(`leave`, async (ctx) => {
-    const id = Number(ctx.from.id);
-
-    if (admins.includes(id)) {
-        await ctx.leaveChat();
-    }
-});
 
 bot.on(`new_chat_members`, async (ctx) => {
     const { id } = ctx.message.new_chat_member;
