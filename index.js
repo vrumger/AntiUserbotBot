@@ -61,7 +61,7 @@ bot.on(`new_chat_members`, async (ctx) => {
     }
 });
 
-bot.action(/unmute.(\d+)/, async (ctx) => {
+bot.action(/unmute\.(\d+)/, async (ctx) => {
     const clickedId = ctx.callbackQuery.from.id;
     const unmuteId = ctx.match[1];
 
