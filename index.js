@@ -14,6 +14,15 @@ bot.context.keyboard = function () {
     ]).extra();
 }
 
+bot.command([`start`, `help`], async (ctx) => {
+    if (ctx.chat.type === `private`) {
+        await ctx.reply(
+            `Hi, I can help you prevent spam attacks in your group. Just add me to your group and I will mute all new users until they prove their humanity.\n\nI'm made by [Twit 💩](tg://user?id=234480941) and you can also find my source code on [github](https://github.com/YouTwitFaceTG/AntiUserbotBot).`,
+            { parse_mode: `markdown` }
+        );
+    }
+});
+
 bot.on(`new_chat_members`, async (ctx) => {
     const { id } = ctx.message.new_chat_member;
 
