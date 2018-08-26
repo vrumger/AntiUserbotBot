@@ -21,7 +21,7 @@ bot.on(`new_chat_members`, async (ctx) => {
         const { user, status } = await ctx.getChatMember(ctx.from.id);
         const statuses = [`creator`, `administrator`];
 
-	if (!statuses.includes(status)) {
+        if (!statuses.includes(status)) {
             await ctx.reply(
                 `Hi [${user.first_name}](tg://user?id=${user.id}). Thanks for adding me but you don't seem to be admin here so I will have to leave. Ask an admin to add me here :)`,
                 { parse_mode: `markdown` }
@@ -55,8 +55,8 @@ bot.on(`new_chat_members`, async (ctx) => {
                 break;
 
             default:
-               await ctx.reply(err.description);
-               await ctx.leaveChat();
+                await ctx.reply(err.description);
+                await ctx.leaveChat();
         }
     }
 });
@@ -68,6 +68,7 @@ bot.action(/unmute.(\d+)/, async (ctx) => {
     if (clickedId == unmuteId) {
         try {
             await ctx.restrictChatMember(clickedId, {
+                until_date: (Date.now() + 86400000) / 1000, // 24 hours
                 can_send_messages: true
             });
         } catch (err) {
@@ -76,7 +77,7 @@ bot.action(/unmute.(\d+)/, async (ctx) => {
 
         ctx.deleteMessage();
     } else {
-        ctx.answerCbQuery(`The user must click the button themself`);
+        ctx.answerCbQuery(`The user must click the button themself.`);
     }
 });
 
