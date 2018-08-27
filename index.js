@@ -24,6 +24,7 @@ bot.command([`start`, `help`], async (ctx) => {
 });
 
 bot.on(`new_chat_members`, async (ctx) => {
+    const { message_id } = ctx.message;
     const { first_name, id } = ctx.message.new_chat_member;
     const { title } = ctx.chat;
 
@@ -50,7 +51,10 @@ bot.on(`new_chat_members`, async (ctx) => {
 
         await ctx.reply(
             `Hi ${first_name}, welcome to ${title}! For the safety of this chat, please confirm your humanity by clicking the button below this message.`,
-            ctx.keyboard()
+            {
+                ...ctx.keyboard(),
+                reply_to_message_id: message_id,
+            }
         );
     } catch (err) {
         switch (err.description) {
@@ -83,6 +87,13 @@ bot.action(/unmute\.(\d+)/, async (ctx) => {
         }
 
         ctx.deleteMessage();
+
+        if (ctx.callbackQuery.message) {
+            const { reply_to_message: reply } = ctx.callbackQuery.message;
+
+            ctx.deleteMessage(reply.message_id)
+                .catch(() => { /* Do nothing */ });
+        }
     } else {
         ctx.answerCbQuery(`The user must click the button themself.`);
     }
