@@ -24,7 +24,8 @@ bot.command([`start`, `help`], async (ctx) => {
 });
 
 bot.on(`new_chat_members`, async (ctx) => {
-    const { id } = ctx.message.new_chat_member;
+    const { first_name, id } = ctx.message.new_chat_member;
+    const { title } = ctx.chat;
 
     if (id == botId) {
         const { user, status } = await ctx.getChatMember(ctx.from.id);
@@ -48,11 +49,8 @@ bot.on(`new_chat_members`, async (ctx) => {
         });
 
         await ctx.reply(
-            `Muted <i>*evil laugh*</i>`,
-            {
-                parse_mode: `html`,
-                ...ctx.keyboard()
-            }
+            `Hi ${first_name}, welcome to ${title}! For the safety of this chat, please confirm your humanity by clicking the button below this message.`,
+            ctx.keyboard()
         );
     } catch (err) {
         switch (err.description) {
