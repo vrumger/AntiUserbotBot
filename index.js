@@ -33,12 +33,16 @@ bot.on(`new_chat_members`, async (ctx) => {
         const statuses = [`creator`, `administrator`];
 
         if (!statuses.includes(status)) {
-            await ctx.reply(
-                `Hi [${user.first_name}](tg://user?id=${user.id}). Thanks for adding me but you don't seem to be admin here so I will have to leave. Ask an admin to add me here :)`,
-                { parse_mode: `markdown` }
-            );
+            try {
+                await ctx.reply(
+                    `Hi [${user.first_name}](tg://user?id=${user.id}). Thanks for adding me but you don't seem to be admin here so I will have to leave. Ask an admin to add me here :)`,
+                    { parse_mode: `markdown` }
+                );
 
-            await ctx.leaveChat();
+                await ctx.leaveChat();
+            } catch (err) {
+                console.log(err);
+            }
         }
 
         return;
