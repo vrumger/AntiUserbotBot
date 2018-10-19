@@ -26,7 +26,8 @@ bot.command([`start`, `help`], async (ctx) => {
 });
 
 bot.on(`new_chat_members`, async (ctx) => {
-    const { message_id, new_chat_member: { first_name, id } } = ctx.message;
+    const { message_id } = ctx.message;
+    const { first_name, id } = ctx.message.new_chat_member;
     const { title } = ctx.chat;
 
     if (id === Number(botId)) {
