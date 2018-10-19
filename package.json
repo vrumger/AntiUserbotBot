@@ -18,5 +18,9 @@
   "homepage": "https://github.com/youtwitfacetg/antiuserbotbot#readme",
   "dependencies": {
     "telegraf": "^3.22.2"
+  },
+  "devDependencies": {
+    "@atomix/eslint-config": "^7.0.0-alpha.2",
+    "eslint": "^5.7.0"
   }
 }

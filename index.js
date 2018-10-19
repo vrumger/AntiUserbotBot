@@ -1,8 +1,8 @@
 `use strict`;
 
-const telegraf = require(`telegraf`);
-const { Markup } = telegraf;
-const bot = new telegraf(process.env.TOKEN);
+const Telegraf = require(`telegraf`);
+const { Markup } = Telegraf;
+const bot = new Telegraf(process.env.TOKEN);
 
 const botId = bot.token.split(`:`)[0];
 
@@ -26,15 +26,13 @@ bot.command([`start`, `help`], async (ctx) => {
 });
 
 bot.on(`new_chat_members`, async (ctx) => {
-    const { message_id } = ctx.message;
-    const { first_name, id } = ctx.message.new_chat_member;
+    const { message_id, new_chat_member: { first_name, id } } = ctx.message;
     const { title } = ctx.chat;
 
-    if (id == botId) {
+    if (id === Number(botId)) {
         const { user, status } = await ctx.getChatMember(ctx.from.id);
-        const statuses = [`creator`, `administrator`];
 
-        if (!statuses.includes(status)) {
+        if (![`creator`, `administrator`].includes(status)) {
             await ctx.reply(
                 `Hi [${user.first_name}](tg://user?id=${user.id}). Thanks for adding me but you don't seem to be admin here so I will have to leave. Ask an admin to add me here :)`,
                 { parse_mode: `markdown` }
@@ -48,7 +46,7 @@ bot.on(`new_chat_members`, async (ctx) => {
 
     try {
         await ctx.restrictChatMember(id, {
-            can_send_messages: false
+            can_send_messages: false,
         });
 
         await ctx.reply(
@@ -58,8 +56,8 @@ bot.on(`new_chat_members`, async (ctx) => {
                 reply_to_message_id: message_id,
             }
         );
-    } catch (err) {
-        switch (err.description) {
+    } catch (error) {
+        switch (error.description) {
             case `Bad Request: can't demote chat creator`:
                 ctx.reply(`Why would you leave if you're the creator?`);
                 break;
@@ -68,7 +66,7 @@ bot.on(`new_chat_members`, async (ctx) => {
                 break;
 
             default:
-                await ctx.reply(err.description);
+                await ctx.reply(error.description);
                 await ctx.leaveChat();
         }
     }
@@ -76,16 +74,16 @@ bot.on(`new_chat_members`, async (ctx) => {
 
 bot.action(/unmute\.(\d+)/, async (ctx) => {
     const clickedId = ctx.callbackQuery.from.id;
-    const unmuteId = ctx.match[1];
+    const [, unmuteId] = ctx.match;
 
     if (clickedId == unmuteId) {
         try {
             await ctx.restrictChatMember(clickedId, {
                 until_date: (Date.now() + 86400000) / 1000, // 24 hours
-                can_send_messages: true
+                can_send_messages: true,
             });
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.log(error);
         }
 
         ctx.deleteMessage();
