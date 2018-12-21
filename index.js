@@ -19,7 +19,7 @@ bot.context.keyboard = function () {
 bot.command([`start`, `help`], async (ctx) => {
     if (ctx.chat.type === `private`) {
         await ctx.reply(
-            `Hi, I can help you prevent spam attacks in your group. Just add me to your group with permission to ban and I will mute all new users until they prove their humanity. If you give also give me permission to delete messages, I can delete join messages after the user is unmuted.\n\nI'm made by [Twit 💩](tg://user?id=234480941) and you can also find my source code on [github](https://github.com/YouTwitFaceTG/AntiUserbotBot).`,
+            `Hi, I can help you prevent spam attacks in your group. Just add me to your group with permission to ban and I will mute all new users until they prove their humanity. If you give also give me permission to delete messages, I can delete join messages after the user is unmuted.\n\nI'm made by [Twit 💩](tg://user?id=234480941) and you can also find my source code on [github](https://github.com/YouTwitFace/AntiUserbotBot).`,
             { parse_mode: `markdown` }
         );
     }
