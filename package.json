@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/youtwitfacetg/antiuserbotbot#readme",
   "dependencies": {
+    "new-i18n": "^1.1.1",
     "telegraf": "^3.22.2"
   }
 }
