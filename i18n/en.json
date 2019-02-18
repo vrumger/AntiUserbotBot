@@ -3,5 +3,6 @@
     "not_admin": "Hi [{{first_name}}](tg://user?id={{user_id}}). Thanks for adding me but you don't seem to be admin here so I will have to leave. Ask an admin to add me here :)",
     "welcome": "Hi {{first_name}}, welcome to {{title}}! For the safety of this chat, please confirm your humanity by clicking the button below this message.",
     "user_must_click": "The user must click the button themself.",
-    "creator": "Why would you leave if you're the creator?"
+    "creator": "Why would you leave if you're the creator?",
+    "not_a_bot": "I'm not a bot"
 }

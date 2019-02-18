@@ -3,5 +3,6 @@
     "not_admin": "Olá [{{first_name}}](tg://user?id={{user_id}}). Obrigado por me adicionar ao grupo, mas parece que você não é um dos administradores do grupo, então, terei que sair. Peça a um administrador para me adicionar aqui :)",
     "welcome": "Olá {{first_name}}, bem vindo ao {{title}}! Para a segurança do grupo, por favor confirme que você é realmente um humano clicando no botão abaixo dessa mensagem.",
     "user_must_click": "O próprio usuário que deve clicar no botão.",
-    "creator": "Porque você sairia se você é o criador?"
+    "creator": "Porque você sairia se você é o criador?",
+    "not_a_bot": "Não sou um robô"
 }
