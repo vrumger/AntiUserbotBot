@@ -1,0 +1,7 @@
+{
+    "start": "Oi, Eu posso ajudá-lo a combater ataques de spam no seu grupo. Me adicione ao grupo como administrador com permissão de banir usuários e eu irei dar mute todos os novos usuários até confirmar que eles não são robôs. Se você também me der permissão para deletar mensagens, irei deletar as mensagens de serviço informando que o usuário entrou, logo após ele provar não ser um robô.\n\nFeito por [Twit 💩](tg://user?id=234480941) e traduzido por [@gabriel](tg://user?id=91116586). Você também pode encontrar meu código no [github](https://github.com/YouTwitFace/AntiUserbotBot).",
+    "not_admin": "Olá [{{first_name}}](tg://user?id={{user_id}}). Obrigado por me adicionar ao grupo, mas parece que você não é um dos administradores do grupo, então, terei que sair. Peça a um administrador para me adicionar aqui :)",
+    "welcome": "Olá {{first_name}}, bem vindo ao {{title}}! Para a segurança do grupo, por favor confirme que você é realmente um humano clicando no botão abaixo dessa mensagem.",
+    "user_must_click": "O próprio usuário que deve clicar no botão.",
+    "creator": "Porque você sairia se você é o criador?"
+}
