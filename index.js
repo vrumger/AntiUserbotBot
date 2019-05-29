@@ -1,4 +1,7 @@
 `use strict`;
+
+require(`dotenv`).config();
+
 const telegraf = require(`telegraf`);
 const { Markup } = telegraf;
 const bot = new telegraf(process.env.TOKEN);
