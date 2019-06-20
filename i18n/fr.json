@@ -1,0 +1,8 @@
+{
+    "start": "Bonjour, je peux vous aider à prévenir les attaques de spam dans votre groupe. Ajoutez-moi à votre groupe avec la permission de bannir et je couperai la parole de tous les nouveaux utilisateurs jusqu'à ce qu'ils prouvent leur humanité. Si vous me donnez aussi la permission de supprimer des messages, je peux supprimer les messages joints après que l'utilisateur ne soit pas muet. Je suis fait par[Twit 💩](tg://user?id=234480941) et vous pouvez aussi trouver mon code source sur[github](https://github.com/YouTwitFace/AntiUserbotBot).",
+    "not_admin": "Bonjour [{{first_name}}](tg://user?id={{user_id}}). Merci de m'avoir ajouté, mais vous n'avez pas l'air d'être de l'administration ici, alors je vais devoir partir. Demandez à un administrateur de m'ajouter ici :)",
+    "welcome": "Salut {{first_name}}, bienvenue sur le groupe {{title}}! Pour la sécurité de ce chat, veuillez confirmer votre humanité en cliquant sur le bouton sous ce message.",
+    "user_must_click": "L'utilisateur doit cliquer sur le bouton lui-même.",
+    "creator": "Pourquoi partiriez-vous si vous êtes le créateur ?",
+    "not_a_bot": "Je ne suis pas un robot"
+}
