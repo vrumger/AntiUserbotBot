@@ -4,5 +4,8 @@
 	"welcome": "Hola {{first_name}}, bienvenido a {{title}}! Por seguridad, debes confirmar que eres un humano pulsando el botón indicado debajo de este mensaje.",
 	"user_must_click": "Solo el usuario indicado debe hacer clic en el botón",
 	"creator": "¿Por qué te irías si eres el creador?",
-	"not_a_bot": "No soy un bot"
+	"not_a_bot": "No soy un bot",
+	"language_updated": "El lenguaje del grupo ha sido actualizado",
+	"welcome_message_updated": "Se ha actualizado el mensaje de bienvenida para este chat",
+	"select_lang": "Selecciona el idioma:"
 }
