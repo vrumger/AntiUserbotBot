@@ -74,12 +74,12 @@ bot.on(`new_chat_members`, async ctx => {
             can_send_messages: false,
         });
 
-        const welcomeMessage = ctx.i18n(`welcome`, { first_name, title });
-
         db.findOne({ chat_id: ctx.chat.id }, async (err, chat) => {
             if (err) return console.log(err);
 
-            await ctx.reply(chat.welcome_message || welcomeMessage, {
+            const welcomeMessage = (chat && chat.welcome_message) || ctx.i18n(`welcome`, { first_name, title });
+
+            await ctx.reply(welcomeMessage, {
                 ...ctx.keyboard(),
                 reply_to_message_id: message_id,
                 parse_mode: `html`,
@@ -129,4 +129,4 @@ bot.action(/unmute\.(\d+)/, async ctx => {
     }
 });
 
-bot.startPolling();
+bot.launch();
