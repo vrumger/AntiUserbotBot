@@ -2,7 +2,7 @@ const Composer = require(`telegraf/composer`);
 const textToHtml = require(`@youtwitface/text-to-html`);
 
 module.exports = (bot, db) => {
-    bot.command(`setwelcome`, Composer.admin(ctx => {
+    bot.command(`setwelcome`, Composer.admin(async ctx => {
         const { text, entities } = ctx.message;
 
         const parsedText = textToHtml(text, entities).slice(entities[0].length + 1);
@@ -13,11 +13,11 @@ module.exports = (bot, db) => {
             { upsert: true },
         );
 
-        ctx.reply(`I've updated the welcome message for this chat.`);
+        ctx.reply(await ctx.i18n(`welcome_message_updated`));
     }));
 
-    bot.command(`setlang`, Composer.admin(ctx => {
-        ctx.reply(`Select a language:`, {
+    bot.command(`setlang`, Composer.admin(async ctx => {
+        ctx.reply(await ctx.i18n(`select_lang`), {
             ...ctx.i18nButtons,
             reply_to_message_id: ctx.message.message_id,
         });

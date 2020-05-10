@@ -5,5 +5,7 @@
     "user_must_click": "The user must click the button themself.",
     "creator": "Why would you leave if you're the creator?",
     "not_a_bot": "I'm not a bot",
-    "language_updated": "The group language has been updated. 👍"
+    "language_updated": "The group language has been updated. 👍",
+    "welcome_message_updated": "I've updated the welcome message for this chat.",
+    "select_lang": "Select a language:"
 }
