@@ -5,7 +5,7 @@ require(`dotenv`).config();
 const textToHtml = require(`@youtwitface/text-to-html`);
 const NeDB = require(`nedb`);
 const telegraf = require(`telegraf`);
-const { Markup } = telegraf;
+const { Composer, Markup } = telegraf;
 const db = new NeDB({ filename: `chats.db`, autoload: true });
 const bot = new telegraf(process.env.TOKEN);
 
@@ -31,7 +31,7 @@ bot.command([`start`, `help`], async ctx => {
     }
 });
 
-bot.command(`setwelcome`, ctx => {
+bot.command(`setwelcome`, Composer.admin(ctx => {
     const { text, entities } = ctx.message;
 
     const parsedText = textToHtml(text, entities).slice(entities[0].length + 1);
@@ -43,7 +43,7 @@ bot.command(`setwelcome`, ctx => {
     );
 
     ctx.reply(`I've updated the welcome message for this chat.`);
-});
+}));
 
 bot.on(`new_chat_members`, async ctx => {
     const { message_id } = ctx.message;
