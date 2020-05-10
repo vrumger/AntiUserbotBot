@@ -6,11 +6,10 @@ module.exports = (bot, db) => {
 
         if (id === ctx.botInfo.id) {
             const { user, status } = await ctx.getChatMember(ctx.from.id);
-            const statuses = [`creator`, `administrator`];
 
-            if (!statuses.includes(status)) {
+            if (![`creator`, `administrator`].includes(status)) {
                 await ctx.reply(
-                    ctx.i18n(`not_admin`, {
+                    await ctx.i18n(`not_admin`, {
                         first_name: user.first_name,
                         user_id: user.id,
                     }),
@@ -33,10 +32,10 @@ module.exports = (bot, db) => {
                     return console.log(err);
                 }
 
-                const welcomeMessage = chat && chat.welcome_message || ctx.i18n(`welcome`, { first_name, title });
+                const welcomeMessage = chat && chat.welcome_message || await ctx.i18n(`welcome`, { first_name, title });
 
                 await ctx.reply(welcomeMessage, {
-                    ...ctx.keyboard(),
+                    ...await ctx.keyboard(),
                     reply_to_message_id: message_id,
                     parse_mode: `html`,
                 });
@@ -44,7 +43,7 @@ module.exports = (bot, db) => {
         } catch (err) {
             switch (err.description) {
                 case `Bad Request: can't demote chat creator`:
-                    ctx.reply(ctx.i18n(`creator`));
+                    ctx.reply(await ctx.i18n(`creator`));
                     break;
 
                 case `Bad Request: user is an administrator of the chat`:

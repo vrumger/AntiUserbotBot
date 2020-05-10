@@ -15,4 +15,11 @@ module.exports = (bot, db) => {
 
         ctx.reply(`I've updated the welcome message for this chat.`);
     }));
+
+    bot.command(`setlang`, Composer.admin(ctx => {
+        ctx.reply(`Select a language:`, {
+            ...ctx.i18nButtons,
+            reply_to_message_id: ctx.message.message_id,
+        });
+    }));
 };
