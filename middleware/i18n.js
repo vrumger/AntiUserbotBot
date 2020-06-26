@@ -18,7 +18,7 @@ module.exports = (bot, db) => {
                 if (error) {
                     reject(error);
                 } else {
-                    resolve(i18n(chat.lang, keyword, variables));
+                    resolve(i18n(chat && chat.lang, keyword, variables));
                 }
             });
         });
