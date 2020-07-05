@@ -20,7 +20,7 @@
     "@youtwitface/text-to-html": "^1.1.3",
     "dotenv": "^8.2.0",
     "nedb": "^1.8.0",
-    "new-i18n": "^2.0.0",
-    "telegraf": "^3.37.0"
+    "new-i18n": "^3.0.0-0",
+    "telegraf": "^3.38.0"
   }
 }
